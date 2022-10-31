@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>CognitiveServiceを使うサイト</title>
+<title>感情分析</title>
 </head>
 
 <body>
-<h1>CognitiveServiceを使うサイト</h1>
+<h1>Sentimentを使うサイト</h1>
 
 <h3>調べたい文字列を教えてください</h3>
 <form method="POST" action="./result">
