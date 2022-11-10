@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/result")
-public class ResultServlet extends HttpServlet {
+public class Result extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ResultServlet() {
+	public Result() {
 		super();
 	}
 	
@@ -24,16 +24,13 @@ public class ResultServlet extends HttpServlet {
 		request.setAttribute("string", string);
 		try {
 		if(string == null || string == "") {
-			request.getRequestDispatcher("/WEB-INF/jsp/sentimentRequest.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/request.jsp").forward(request, response);
 		}
 		try {
-			Sentiments result = Sentiment.getSentiment(string);
-			float message1 = result.documents[0].confidenceScores.positive;
-			float message2 = result.documents[0].confidenceScores.neutral;
-			float message3 = result.documents[0].confidenceScores.negative;
-			request.setAttribute("message1", message1);
-			request.setAttribute("message2", message2);
-			request.setAttribute("message3", message3);
+			Language result = Json05.getLanguage(string);
+			String message = result.documents[0].detectedLanguage.name;
+			
+			request.setAttribute("message", message);
 			request.getRequestDispatcher("/WEB-INF/jsp/result.jsp").forward(request, response);
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
@@ -41,7 +38,7 @@ public class ResultServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	} catch(Exception e) {
-		request.getRequestDispatcher("/WEB-INF/jsp/sentimentRequest.jsp");
+		request.getRequestDispatcher("/WEB-INF/jsp/request.jsp");
 	}
 }
 

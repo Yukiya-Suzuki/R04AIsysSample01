@@ -4,17 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>感情分析</title>
+<title>言語識別</title>
 </head>
 
 <body>
 <header>
-<a href="./request">DetectedLanguage</a>
+<a href="./sentimentRequest">Sentiment</a>
 </header>
-<h1>Sentimentを使うサイト</h1>
+<h1>DetectedLanguageを使うサイト</h1>
 
 <h3>調べたい文字列を教えてください</h3>
-<form method="POST" action="./sentimentresult">
+<form method="POST" action="./result">
 <input type="TEXT" name="string" />
 <input type="submit" />
 </form>
